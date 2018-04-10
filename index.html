@@ -24,7 +24,10 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
     <link href="https://fonts.googleapis.com/css?family=Lobster&amp;subset=vietnamese" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500&amp;subset=vietnamese" rel="stylesheet">
+
     <!--===============================================================================================-->
+    <link rel="stylesheet" href="./css/animate.min.css">
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!--===============================================================================================-->
@@ -32,72 +35,103 @@
 
 <body>
 
+    <div class="container-contact100 container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="wrap-contact100 animated bounceInDown">
+                    <form class="contact100-form">
+                        <span class="contact100-form-title animated fadeInLeft uniform-delay">
+                            Quản lý nhân viên
+                        </span>
 
-    <div class="container-contact100">
+                        <div class="row mb-1">
+                            <div class="col-md-6 validation-wrap animated fadeInLeft uniform-delay">
+                                <div class="wrap-input100 col-md-12">
+                                    <input id="fname-field" class="input100" type="text" placeholder="Họ">
+                                    <span class="focus-input100"></span>
+                                </div>
+                                <span id="fname-validation" class="validation-warning"></span>
 
-        <div class="wrap-contact100">
-            <form class="contact100-form">
-                <span class="contact100-form-title">
-					Quản lý nhân viên
-				</span>
-
-                <div class="row mb-1">
-                    <div class="col-md-6 validation-wrap">
-                        <div class="wrap-input100 col-md-12">
-                            <input id="fname-field" class="input100" type="text" placeholder="Họ">
-                            <span class="focus-input100"></span>
+                            </div>
+                            <div class="col-md-6 validation-wrap animated fadeInRight uniform-delay">
+                                <div class="wrap-input100 col-md-12">
+                                    <input id="lname-field" class="input100" type="text" placeholder="Tên">
+                                    <span class="focus-input100"></span>
+                                </div>
+                                <span id="lname-validation" class="validation-warning"></span>
+                            </div>
                         </div>
-                        <span id="fname-validation" class="validation-warning"></span>
 
-                    </div>
-                    <div class="col-md-6 validation-wrap">
-                        <div class="wrap-input100 col-md-12">
-                            <input id="lname-field" class="input100" type="text" placeholder="Tên">
-                            <span class="focus-input100"></span>
+                        <div class="validation-wrap animated fadeInRight uniform-delay">
+                            <div class="wrap-input100">
+                                <input id="id-num-field" class="input100" type="text" placeholder="Mã số nhân viên">
+                                <span class="focus-input100"></span>
+                            </div>
+                            <span id="id-number-validation" class="validation-warning long-validation"></span>
                         </div>
-                        <span id="lname-validation" class="validation-warning"></span>
+
+
+                        <div class="validation-wrap select-wrap animated fadeInLeft uniform-delay">
+                            <select id="role-field" id="role">
+                                        <option>Chọn chức vụ</option>
+                                        <option>Sếp</option>
+                                        <option>Trưởng phòng</option>
+                                        <option>Nhân viên</option>
+                            </select>
+                            <span id="role-validation" class="validation-warning"></span>
+                        </div>
+
+
+                        <div class="animated fadeInRight uniform-delay">
+                            <div class="wrap-input100">
+                                <div class="row">
+                                    <span id="startedDay">Ngày làm :</span>
+                                    <input type="date" id="datepicker" class="input100">
+                                </div>
+                                <span class="focus-input100"></span>
+                            </div>
+                        </div>
+
+
+                        <div class="container-contact100-form-btn animated flipInX last-delay">
+                            <input id="add-employee-btn" type="button" value="Thêm nhân viên" class="contact100-form-btn">
+                        </div>
+                    </form>
+
+                    <div class="contact100-more animated fadeInLeft">
+                        @2018 | Employee Management System.
                     </div>
                 </div>
-
-                <div class="validation-wrap">
-                    <div class="wrap-input100">
-                        <input id="id-num-field" class="input100" type="text" placeholder="Mã số nhân viên">
-                        <span class="focus-input100"></span>
-                    </div>
-                    <span id="id-number-validation" class="validation-warning long-validation"></span>
-                </div>
-
-                <div class="validation-wrap select-wrap">
-                    <select id="role-field" id="role">
-                                <option>Chọn chức vụ</option>
-                                <option>Sếp</option>
-                                <option>Trưởng phòng</option>
-                                <option>Nhân viên</option>
-                    </select>
-                    <span id="role-validation" class="validation-warning"></span>
-                </div>
-
-
-                <div class="wrap-input100">
-                    <div class="row">
-                        <span id="startedDay">Ngày làm :</span>
-                        <input type="date" id="datepicker" class="input100">
-                    </div>
-                    <span class="focus-input100"></span>
-                </div>
-
-
-                <div class="container-contact100-form-btn">
-                    <input id="add-employee-btn" type="button" value="Thêm nhân viên" class="contact100-form-btn">
-                </div>
-            </form>
-
-            <div class="contact100-more">
-                @2018 | Employee Management System.
             </div>
+
+            <div class="col-lg-6">
+                <div id="bang-thong-bao" class="animated bounceInDown delay-thong-bao">
+                    <h1 class="animated bounceInDown delay-thong-bao">Bạn chưa nhập nhân viên nào cả</h1>
+                </div>
+                <!--Start table-->
+                <div class="container">
+                    <table class="table table-hover" id="table-display">
+                        <thead>
+                            <tr>
+                                <th>MSNV</th>
+                                <th>Họ</th>
+                                <th>Tên</th>
+                                <th>Ngày làm</th>
+                                <th>Chức vụ</th>
+                                <th>Lương</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tBody">
+
+                        </tbody>
+                    </table>
+                </div>
+                <!--End table-->
+            </div>
+
         </div>
     </div>
-
 
     <!--===============================================================================================-->
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
@@ -115,7 +149,10 @@
     <script src="vendor/countdowntime/countdowntime.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+    <script src="./js/nhanvien.js"></script>
+    <script src="./js/danhsachnhanvien.js"></script>
     <script src="./js/main.js"></script>
+
 </body>
 
 </html>
